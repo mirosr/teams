@@ -11,6 +11,12 @@ RSpec.feature 'Team info' do
   end
 
   scenario 'Show an info for the selected team' do
-    pending 'still not implemented'
+    visit '/'
+
+    expect(current_path).to eq root_path
+
+    select 'Aston_Villa', from: 'Select team'
+
+    expect(page).to have_text '8. Aston_Villa 46-47'
   end
 end
