@@ -1,2 +1,8 @@
-%h1 Team#index
-%p Find me in app/views/team/index.html.haml
+%h1 Team Info
+
+= form_tag '#' do
+  = label_tag 'team', 'Select team'
+  = select_tag 'team', ''
+  = submit_tag 'Show'
+
+%p No team is selected
