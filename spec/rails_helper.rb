@@ -3,6 +3,7 @@ require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
+require 'capybara/poltergeist'
 
 RSpec.configure do |config|
   # RSpec Rails can automatically mix in different behaviours to your tests
@@ -20,3 +21,5 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 end
+
+Capybara.javascript_driver = :poltergeist
