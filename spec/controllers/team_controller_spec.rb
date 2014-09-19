@@ -8,9 +8,11 @@ RSpec.describe TeamController do
     end
 
     it 'initializes @teams' do
+      allow(Team).to receive(:all) { [:teams] }
+
       get :index
 
-      expect(assigns(:teams)).to respond_to(:map)
+      expect(assigns(:teams)).to eq([:teams])
     end
   end
 
@@ -23,12 +25,11 @@ RSpec.describe TeamController do
     end
 
     it 'initializes @team' do
-      team = double(:team)
-      allow(Team).to receive(:find).with('football.dat','123') { team }
+      allow(Team).to receive(:find).with('123') { :team }
 
       post :fetch, format: :js, team: '123'
 
-      expect(assigns(:team)).to eq(team)
+      expect(assigns(:team)).to eq(:team)
     end
   end
 end

@@ -1,10 +1,10 @@
 class TeamController < ApplicationController
   def index
-    @teams = Team.all('football.dat')
+    @teams = Team.all
   end
 
   def fetch
-    @team = Team.find('football.dat', params[:team])
+    @team = Team.find(params[:team])
 
     respond_to do |format|
       format.js

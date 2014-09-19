@@ -1,6 +1,8 @@
 Team = Struct.new(:id, :name, :col_f, :col_a) do
-  def self.all(filename)
-    load_data(filename).map do |line|
+  FILENAME = 'football.dat'
+
+  def self.all
+    load_data.map do |line|
       cols = line.chomp.split(/\s{2,}/)
 
       id, name = cols[1].split('. ')
@@ -9,8 +11,8 @@ Team = Struct.new(:id, :name, :col_f, :col_a) do
     end
   end
 
-  def self.find(filename, team_id)
-    all(filename).detect { |team| team.id == team_id.to_s }
+  def self.find(team_id)
+    all.detect { |team| team.id == team_id.to_s }
   end
 
   def to_s
@@ -19,12 +21,12 @@ Team = Struct.new(:id, :name, :col_f, :col_a) do
 
   private
 
-  def self.load_data(filename)
-    load_file(filename).each_line.select { |line| line =~ /^\s+\d/ }
+  def self.load_data
+    load_file.each_line.select { |line| line =~ /^\s+\d/ }
   end
 
-  def self.load_file(filename)
-    File.open(root_path.join(filename))
+  def self.load_file
+    File.open(root_path.join(FILENAME))
   end
 
   def self.root_path

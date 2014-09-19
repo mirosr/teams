@@ -8,7 +8,7 @@ RSpec.describe Team do
     it 'returns an array with team info from a file' do
       allow(Team).to receive(:root_path) { fixture_root_path }
 
-      expect(Team.all('football.dat')).to eq(fixture_array)
+      expect(Team.all).to eq(fixture_array)
     end
   end
 
@@ -16,14 +16,14 @@ RSpec.describe Team do
     it 'returns a team for the given id' do
       allow(Team).to receive(:root_path) { fixture_root_path }
 
-      expect(Team.find('football.dat', 2)).to eq(liverpool)
+      expect(Team.find(2)).to eq(liverpool)
     end
 
     context 'when the given id is not found' do
       it 'returns nil' do
         allow(Team).to receive(:root_path) { fixture_root_path }
 
-        expect(Team.find('football.dat', 100)).to be_nil
+        expect(Team.find(100)).to be_nil
       end
     end
   end
