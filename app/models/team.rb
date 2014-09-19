@@ -1,1 +1,5 @@
-class Team; end
+class Team
+  def self.all
+    []
+  end
+end

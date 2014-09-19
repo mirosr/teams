@@ -1,5 +1,5 @@
 class TeamController < ApplicationController
   def index
-    @teams = []
+    @teams = Team.all
   end
 end
