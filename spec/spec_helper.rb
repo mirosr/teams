@@ -28,7 +28,7 @@ RSpec.configure do |config|
   # get run.
   config.filter_run :focus
   config.filter_run_excluding :broken
-  config.treat_symbols_as_metadata_keys_with_true_values = true
+  # config.treat_symbols_as_metadata_keys_with_true_values = true
   config.run_all_when_everything_filtered = true
 
   # Limits the available syntax to the non-monkey patched syntax that is recommended.
