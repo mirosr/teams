@@ -1,6 +1,8 @@
 RSpec.describe Team do
   it { is_expected.to respond_to(:id) }
   it { is_expected.to respond_to(:name) }
+  it { is_expected.to respond_to(:col_f) }
+  it { is_expected.to respond_to(:col_a) }
 
   describe '.all' do
     it 'returns an array with team info from a file' do
@@ -26,6 +28,14 @@ RSpec.describe Team do
     end
   end
 
+  describe '#to_s' do
+    it 'returns a string representation in predefined format' do
+      team = Team.new('100', 'Aaa', '10', '20')
+
+      expect(team.to_s).to eq('100. Aaa 10-20')
+    end
+  end
+
   private
 
   def fixture_root_path
@@ -34,13 +44,13 @@ RSpec.describe Team do
 
   def fixture_array
     [
-      Team.new('1', 'Arsenal'),
-      Team.new('2', 'Liverpool'),
-      Team.new('3', 'Manchester_U')
+      Team.new('1', 'Arsenal', '79', '36'),
+      Team.new('2', 'Liverpool', '67', '30'),
+      Team.new('3', 'Manchester_U', '87', '45')
     ]
   end
 
   def liverpool
-    Team.new('2', 'Liverpool')
+    Team.new('2', 'Liverpool', '67', '30')
   end
 end
