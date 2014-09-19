@@ -1,5 +1,5 @@
 class TeamController < ApplicationController
   def index
-    @teams = Team.all
+    @teams = Team.all('football.dat')
   end
 end

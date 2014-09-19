@@ -4,11 +4,17 @@ RSpec.describe Team do
 
   describe '.all' do
     it 'returns an array with team info from a file' do
+      allow(Team).to receive(:root_path) { fixture_root_path }
+
       expect(Team.all('football.dat')).to eq(fixture_array)
     end
   end
 
   private
+
+  def fixture_root_path
+    Rails.root.join('spec', 'fixtures')
+  end
 
   def fixture_array
     [
