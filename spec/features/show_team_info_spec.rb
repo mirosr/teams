@@ -10,13 +10,17 @@ RSpec.feature 'Team info' do
     expect(page).to have_text 'No team is selected'
   end
 
-  scenario 'Show an info for the selected team' do
+  scenario 'Show an info for the selected team', :js do
     visit '/'
 
     expect(current_path).to eq root_path
 
     select 'Aston_Villa', from: 'Select team'
 
-    expect(page).to have_text '8. Aston_Villa 46-47'
+    click_on 'Show'
+
+    within '#team-info' do
+      expect(page).to have_text '8. Aston_Villa 46-47'
+    end
   end
 end
