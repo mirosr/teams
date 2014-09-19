@@ -10,6 +10,22 @@ RSpec.describe Team do
     end
   end
 
+  describe '.find' do
+    it 'returns a team for the given id' do
+      allow(Team).to receive(:root_path) { fixture_root_path }
+
+      expect(Team.find('football.dat', 2)).to eq(liverpool)
+    end
+
+    context 'when the given id is not found' do
+      it 'returns nil' do
+        allow(Team).to receive(:root_path) { fixture_root_path }
+
+        expect(Team.find('football.dat', 100)).to be_nil
+      end
+    end
+  end
+
   private
 
   def fixture_root_path
@@ -22,5 +38,9 @@ RSpec.describe Team do
       Team.new('2', 'Liverpool'),
       Team.new('3', 'Manchester_U')
     ]
+  end
+
+  def liverpool
+    Team.new('2', 'Liverpool')
   end
 end

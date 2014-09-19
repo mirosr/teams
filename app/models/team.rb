@@ -9,7 +9,8 @@ Team = Struct.new(:id, :name) do
     end
   end
 
-  def self.find(team_id)
+  def self.find(filename, team_id)
+    all(filename).detect { |team| team.id == team_id.to_s }
   end
 
   private
