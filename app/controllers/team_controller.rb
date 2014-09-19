@@ -4,7 +4,7 @@ class TeamController < ApplicationController
   end
 
   def fetch
-    @team = Team.find(params[:team])
+    @team = Team.find('football.dat', params[:team])
 
     respond_to do |format|
       format.js

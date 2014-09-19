@@ -24,7 +24,7 @@ RSpec.describe TeamController do
 
     it 'initializes @team' do
       team = double(:team)
-      allow(Team).to receive(:find).with('123') { team }
+      allow(Team).to receive(:find).with('football.dat','123') { team }
 
       post :fetch, format: :js, team: '123'
 
