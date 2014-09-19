@@ -1,6 +1,6 @@
 %h1 Team Info
 
-= form_tag '#' do
+= form_tag fetch_team_index_path, remote: true do
   = label_tag 'team', 'Select team'
   = select_tag 'team', options_from_collection_for_select(@teams, 'id', 'name')
   = submit_tag 'Show'
