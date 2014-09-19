@@ -9,6 +9,9 @@ Team = Struct.new(:id, :name) do
     end
   end
 
+  def self.find(team_id)
+  end
+
   private
 
   def self.load_data(filename)
